@@ -18,6 +18,12 @@ Post.init(
     description:{
       type:DataTypes.STRING,
       allwoNull:false
+    },
+    name:{
+      type: DataTypes.STRING, 
+      foreignKey: true,
+      references: 'Writer',
+      referencesKey: 'name' 
     }
   },
   {

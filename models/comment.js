@@ -17,6 +17,12 @@ Comment.init(
     },
     date:{
         type:DataTypes.DATE
+    },
+    name:{
+      type: DataTypes.STRING, 
+      foreignKey: true,
+      references: 'Writer',
+      referencesKey: 'name' 
     }
   },
   {

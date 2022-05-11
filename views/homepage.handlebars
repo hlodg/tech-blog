@@ -7,3 +7,20 @@
     <h1><span class="badge bg-secondary">The Tech Blog</span></h1>
   </nav>
 </header>
+
+<body>
+
+  {{!-- creates the post cards --}}
+  {{#each Post as |post| }}
+  <div class="card">
+    <div class="card-header">
+      {{Post.title}}
+    </div>
+    <div class="card-body">
+      <p class="card-text">{{Post.description}}</p>
+      <p>{{Post.name}}</p>
+    </div>
+  </div>
+  {{/each}}
+
+</body>

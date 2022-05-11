@@ -1,0 +1,11 @@
+  {{#each post as |post| }}
+<div class="card">
+  <div class="card-header">
+      {{Post.title}}
+  </div>
+  <div class="card-body">
+    <p class="card-text">{{Post.description}}</p>
+    <p>{{Post.name}}</p>
+  </div>
+</div>
+  {{/each}}
