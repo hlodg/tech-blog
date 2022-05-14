@@ -1,45 +1,63 @@
 const router = require('express').Router();
-const { Project, Writer } = require('../models');
-const withAuth = require('../utils/auth');
+const { Project, Writer, Post } = require('../models');
 
-
+// get all posts
 router.get('/', async (req, res) => {
   try {
-    
+    const postData = await Post.findAll({
+      include: [Writer]
+    })
+
+    const posts = postData.map((post) => post.get({ plain: true }))
+
+    res.render('homepage', { posts })
   } catch (error) {
-    
+    res.status(400).json(error)
   }
 });
 
-
-// Use withAuth middleware to prevent access to route
-router.get('/', withAuth, async (req, res) => {
+// get single post /post/:id
+// req.params.id--> include writer, comments
+router.get('/', async (req, res) => {
   try {
-    // Find the logged in user based on the session ID
-    const userData = await Writer.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+    const onePost = await Post.findOne({
+      where: id = req.params.id,
+      include: [Writer, Comment]
     });
 
-    const user = userData.get({ plain: true });
-
-    res.render('homepage', {
-      ...user,
-      logged_in: true
-    });
-  } catch (err) {
-    res.status(500).json(err);
+    res.render('post', { onePost })
+  } catch (error) {
+    res.status(400).json(error)
   }
 });
 
-router.get('/login', (req, res) => {
-  // If the user is already logged in, redirect the request to another route
-  if (req.session.logged_in) {
-    res.redirect('/');
-    return;
-  }
+// create new post (post)
+router.post('/', async (req,res)=>{
+  try {
+    const firstPost= await Post.create(
+      req.body
+    )
 
-  res.render('login');
+    res.status(200).json(firstPost);
+
+  } catch (error) {
+    res.status(400).json(error)
+  }
 });
+
+// update post 
+router.post('/', async (req, res)=>{
+  try {
+    const updatePost= await Post.findOrCreate({
+      where: id=req.body.id
+    })
+    res.status(200).json(updatePost)
+  } catch (error) {
+    res.status(400).json(error)
+  }
+})
+
+// delete post
+
 
 module.exports = router;

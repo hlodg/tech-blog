@@ -19,11 +19,11 @@ Post.init(
       type:DataTypes.STRING,
       allwoNull:false
     },
-    name:{
-      type: DataTypes.STRING, 
+    writer_id:{
+      type: DataTypes.INTEGER, 
       foreignKey: true,
-      references: 'Writer',
-      referencesKey: 'name' 
+      references: {model: 'Writer', 
+      key:'id'}
     }
   },
   {

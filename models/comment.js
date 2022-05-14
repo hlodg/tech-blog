@@ -18,11 +18,11 @@ Comment.init(
     date:{
         type:DataTypes.DATE
     },
-    name:{
-      type: DataTypes.STRING, 
+    writer_id:{
+      type: DataTypes.INTEGER, 
       foreignKey: true,
-      references: 'Writer',
-      referencesKey: 'name' 
+      references: {model: 'Writer', 
+      key:'id'}
     }
   },
   {
