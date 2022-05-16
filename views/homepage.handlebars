@@ -1,16 +1,5 @@
-<header>
-  <nav class="nav nav-pills flex-column flex-sm-row">
-    <a class="flex-sm-fill text-sm-center nav-link active" aria-current="page" href="#">Home</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">Dashboard</a>
-    <a class="flex-sm-fill text-sm-center nav-link" href="#">Login</a>
-    <a class="flex-sm-fill text-sm-center nav-link disabled">Logout</a>
-    <h1><span class="badge bg-secondary">The Tech Blog</span></h1>
-  </nav>
-</header>
 
-<body>
-
-  {{!-- creates the post cards --}}
+{{!-- creates the post cards --}}
   {{#each posts as |post| }}
   <div class="card">
     <div class="card-header">
@@ -22,5 +11,3 @@
     </div>
   </div>
   {{/each}}
-
-</body>

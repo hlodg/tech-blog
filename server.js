@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-// const handlebars = exphbs.create();
+const handlebars = expresshbs.create();
 
 const sess = {
   secret: 'Super secret secret',
@@ -26,7 +26,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('handlebars', expresshbs.engine);
+app.engine('handlebars', handlebars.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());

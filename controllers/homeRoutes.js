@@ -3,9 +3,10 @@ const { Project, Writer, Post } = require('../models');
 
 // get all posts
 router.get('/', async (req, res) => {
+  console.log("hello")
   try {
     const postData = await Post.findAll({
-      include: [Writer]
+      include:[Writer]
     })
 
     const posts = postData.map((post) => post.get({ plain: true }))
@@ -75,6 +76,10 @@ router.delete('/:id', async (req,res)=>{
   } catch (error) {
     res.status(400).json(error)
   }
+})
+
+router.get('/login', (req,res)=>{
+  res.render('login')
 })
 
 module.exports = router;

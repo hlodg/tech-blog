@@ -22,7 +22,7 @@ Post.init(
     writer_id:{
       type: DataTypes.INTEGER, 
       foreignKey: true,
-      references: {model: 'Writer', 
+      references: {model: 'writer', 
       key:'id'}
     }
   },
@@ -31,7 +31,7 @@ Post.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'blog',
+    modelName: 'post',
   }
 );
 
