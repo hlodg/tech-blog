@@ -82,4 +82,8 @@ router.get('/login', (req,res)=>{
   res.render('login')
 })
 
+router.get('/postForm', (req,res)=>{
+  res.render('postForm')
+})
+
 module.exports = router;

@@ -1,0 +1,11 @@
+async function createBlogPost (event){
+    event.preventDefault()
+
+    const blogPost=document.querySelector('#blogpost').value.trim()
+    const postName = document.querySelector('#name').value.trim()
+
+    if(blogPost && postName){
+        console.log ("working blog")
+        const res = await fetch ('./api/users')
+    }
+}
