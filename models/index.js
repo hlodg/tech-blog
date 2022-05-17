@@ -11,5 +11,4 @@ Post.belongsTo(Writer, {
 })
 
 
-
 module.exports = {Writer, Post, Comment}

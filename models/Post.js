@@ -12,9 +12,8 @@ Post.init(
       primaryKey: true
     },
     title:{
-      type:DataTypes.STRING,
-      allowNull: false
-    },
+      type:DataTypes.STRING
+        },
     description:{
       type:DataTypes.STRING,
       allwoNull:false
