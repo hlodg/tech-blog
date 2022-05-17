@@ -1,9 +1,21 @@
 const router = require('express').Router();
 const { Project, Writer, Post } = require('../models');
 
-router.get('/', (req, res)=>{
+router.get('/', async (req, res)=>{
   try {
-    res.render('homepage', req.session)
+    const postData = await Post.findAll({
+      // order:[['title','description']],
+      attributes:[
+        'title',
+        'description',
+        'writer_id'
+      ],
+
+  })
+
+    const posts = postData.map((post)=>post.get({plain:true}))
+
+    res.render('homepage', {posts})
   } catch (error) {
     res.status(500).json(error)
   }
